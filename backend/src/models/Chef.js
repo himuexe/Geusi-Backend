@@ -69,6 +69,13 @@ const chefSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Auth helper fields for refresh/reset token flows
+chefSchema.add({
+  refreshToken: { type: String, default: null },
+  resetPasswordToken: { type: String, default: null },
+  resetPasswordExpires: { type: Date, default: null },
+});
+
 chefSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   

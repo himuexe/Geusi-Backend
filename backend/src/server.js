@@ -62,8 +62,10 @@ app.get("/api/health", async (req, res) => {
 // Routes 
 const authRouter = require("./routes/authRoute");
 const orderRouter = require("./routes/orderRoute");
+const cookAuthRouter = require("./routes/cookAuthRoute");
 
 app.use("/api/auth", authRouter);
+app.use("/api/cook-auth", cookAuthRouter);
 app.use("/api/orders", orderRouter);
 
 const server = app.listen(PORT, () => {
